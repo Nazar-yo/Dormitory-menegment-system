@@ -61,37 +61,9 @@ public class RoomController {
     }
 
     @GetMapping("/{furniture_info}/available")
-    public Pages<RoomResponseDto> getFreeRoomsByGender(@RequestParam Gender gender,
-                                                      @PathVariable("furniture_info") boolean furnitureInfo,
-                                                      @RequestParam(defaultValue = "20") Integer count,
-                                                      @RequestParam(defaultValue = "0") Integer page,
-                                                      @RequestParam(defaultValue = "id") String sortBy) {
-        Sort sort = Sort.by(sortBy);
-        PageRequest pageRequest = PageRequest.of(page, count, sort);
-
-        Page<Room> pages = roomService.getFreeRoomsByGender(gender, pageRequest);
-
-        return mapContent(pages, furnitureInfo);
-    }
-
-    @GetMapping("/{furniture_info}/available")
-    public Pages<RoomResponseDto> getFreeRoomsByGenderAndDormitory(@RequestParam Gender gender,
-                                                                   @PathVariable("furniture_info") boolean furnitureInfo,
-                                                       @RequestParam Long dormitoryId,
-                                                       @RequestParam(defaultValue = "20") Integer count,
-                                                       @RequestParam(defaultValue = "0") Integer page,
-                                                       @RequestParam(defaultValue = "id") String sortBy) {
-        Sort sort = Sort.by(sortBy);
-        PageRequest pageRequest = PageRequest.of(page, count, sort);
-
-        Page<Room> pages = roomService.getFreeRoomsByGenderAndDormitory(gender, dormitoryId, pageRequest);
-
-        return mapContent(pages, furnitureInfo);
-    }
-
-    @GetMapping("/{furniture_info}/available")
     public Pages<RoomResponseDto> getFreeRoomsByGenderAndDormitoryType(@RequestParam Gender gender,
                                                                        @PathVariable("furniture_info") boolean furnitureInfo,
+                                                                       @RequestParam Long dormitoryId,
                                                                        @RequestParam DormitoryType dormitoryType,
                                                                        @RequestParam(defaultValue = "20") Integer count,
                                                                        @RequestParam(defaultValue = "0") Integer page,
@@ -99,7 +71,7 @@ public class RoomController {
         Sort sort = Sort.by(sortBy);
         PageRequest pageRequest = PageRequest.of(page, count, sort);
 
-        Page<Room> pages = roomService.getFreeRoomsByGenderAndDormitoryType(gender, dormitoryType, pageRequest);
+        Page<Room> pages = roomService.getFreeRooms(gender, dormitoryId ,dormitoryType, pageRequest);
 
         return mapContent(pages, furnitureInfo);
     }

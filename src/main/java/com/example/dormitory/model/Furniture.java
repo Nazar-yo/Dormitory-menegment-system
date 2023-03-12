@@ -1,6 +1,7 @@
 package com.example.dormitory.model;
 
 import com.example.dormitory.model.enums.FurnitureType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -18,6 +19,7 @@ import lombok.Data;
 public class Furniture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "furniture_id")
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     private Room room;

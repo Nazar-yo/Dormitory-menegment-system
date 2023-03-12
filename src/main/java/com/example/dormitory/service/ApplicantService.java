@@ -9,4 +9,6 @@ public interface ApplicantService {
     Applicant update(Long id, ApplicantRequestDto applicantRequestDto);
 
     Applicant getById(Long id);
+
+    Applicant findByEmail(String email);
 }

@@ -1,6 +1,7 @@
 package com.example.dormitory.model;
 
 import com.example.dormitory.model.enums.DormitoryType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,6 +17,7 @@ import lombok.Data;
 public class Dormitory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dormitory_id")
     private Long id;
     private Integer dormitoryNumber;
     private String address;

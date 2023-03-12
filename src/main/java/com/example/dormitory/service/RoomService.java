@@ -13,10 +13,5 @@ public interface RoomService {
     Room create(RoomRequestDto roomRequestDto);
 
     Room getById(Long id);
-
-    Page<Room> getFreeRoomsByGender(Gender gender, PageRequest pageRequest);
-
-    Page<Room> getFreeRoomsByGenderAndDormitory(Gender gender, Long dormitoryId, PageRequest pageRequest);
-
-    Page<Room> getFreeRoomsByGenderAndDormitoryType(Gender gender, DormitoryType dormitoryType, PageRequest pageRequest);
+    Page<Room> getFreeRooms(Gender gender, Long dormitoryId, DormitoryType dormitoryType, PageRequest pageRequest);
 }

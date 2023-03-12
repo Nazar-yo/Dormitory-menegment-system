@@ -47,17 +47,12 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Page<Room> getFreeRoomsByGender(Gender gender, PageRequest pageRequest) {
-        return roomRepository.findRoomsByGender(gender, pageRequest);
-    }
-
-    @Override
-    public Page<Room> getFreeRoomsByGenderAndDormitory(Gender gender, Long dormitoryId, PageRequest pageRequest) {
-        return roomRepository.findRoomsByGenderAndDormitory(gender, dormitoryId, pageRequest);
-    }
-
-    @Override
-    public Page<Room> getFreeRoomsByGenderAndDormitoryType(Gender gender, DormitoryType dormitoryType, PageRequest pageRequest) {
+    public Page<Room> getFreeRooms(Gender gender, Long dormitoryId, DormitoryType dormitoryType, PageRequest pageRequest) {
+        if (dormitoryId == null && dormitoryType == null) {
+            return roomRepository.findRoomsByGender(gender, pageRequest);
+        } else if (dormitoryId != null) {
+            return roomRepository.findRoomsByGenderAndDormitory(gender, dormitoryId, pageRequest);
+        }
         return roomRepository.findRoomsByGenderAndDormitoryType(gender, dormitoryType, pageRequest);
     }
 }
