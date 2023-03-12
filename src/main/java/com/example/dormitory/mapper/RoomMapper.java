@@ -8,11 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoomMapper implements ResponseDtoMapper<RoomResponseDto, Room>,
         RequestDtoMapper<RoomRequestDto, Room> {
-    private final DormitoryMapper dormitoryMapper;
-
-    public RoomMapper(DormitoryMapper dormitoryMapper) {
-        this.dormitoryMapper = dormitoryMapper;
-    }
 
     @Override
     public Room mapToModel(RoomRequestDto dto) {
@@ -33,7 +28,7 @@ public class RoomMapper implements ResponseDtoMapper<RoomResponseDto, Room>,
         roomResponseDto.setGender(room.getGender());
         roomResponseDto.setResidents_number(room.getResidents_number());
         roomResponseDto.setId(room.getId());
-        roomResponseDto.setDormitory(dormitoryMapper.mapToDto(room.getDormitory()));
+        roomResponseDto.setDormitoryId(room.getDormitory().getId());
 
         return roomResponseDto;
     }

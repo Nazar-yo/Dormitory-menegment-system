@@ -10,13 +10,13 @@ import com.example.dormitory.mapper.DormitoryMapper;
 import com.example.dormitory.mapper.PageMapper;
 import com.example.dormitory.model.Dormitory;
 import com.example.dormitory.service.DormitoryService;
-import jakarta.websocket.server.PathParam;
 import org.apache.commons.io.IOUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,13 +55,13 @@ public class DormitoryController {
         return dormitoryPages;
     }
 
-    @GetMapping
-    public DormitoryResponseDto getById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public DormitoryResponseDto getById(@PathVariable("id") Long id) {
         return dormitoryMapper.mapToDto(dormitoryService.getById(id));
     }
 
-    @GetMapping(value = "/photo", produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getPhotoById(@PathParam("id") Long id) throws IOException {
+    @GetMapping(value = "/{id}/photo", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getPhotoById(@PathVariable("id") Long id) throws IOException {
         return IOUtils.toByteArray(dormitoryService.getPhotoById(id));
     }
 
