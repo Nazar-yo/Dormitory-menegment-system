@@ -1,7 +1,5 @@
 package com.example.dormitory.model;
 
-import java.io.File;
-import com.example.dormitory.model.enums.DocumentType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,6 +22,5 @@ public class Document {
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     private Applicant applicant;
-    @Enumerated(value = EnumType.STRING)
-    private DocumentType documentType;
+    private String documentType;
 }
