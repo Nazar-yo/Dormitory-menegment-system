@@ -32,8 +32,6 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeHttpRequests((auth -> auth
-                .anyRequest().authenticated()))
                 .apply(new JwtConfigurer(jwtTokenProvider));
 
         return http.build();

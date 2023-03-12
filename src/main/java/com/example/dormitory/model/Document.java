@@ -26,5 +26,4 @@ public class Document {
     private Applicant applicant;
     @Enumerated(value = EnumType.STRING)
     private DocumentType documentType;
-    private File document;
 }
