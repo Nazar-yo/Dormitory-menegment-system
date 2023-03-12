@@ -25,4 +25,5 @@ public class Dormitory {
     private DormitoryType dormitoryType;
     private String contacts;
     private String faculties;
+    private String photo;
 }

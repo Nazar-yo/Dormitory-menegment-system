@@ -9,5 +9,5 @@ public interface SettlementApplicationService {
 
     SettlementApplication getById(Long id);
 
-    List<SettlementApplication> getAll();
+    List<SettlementApplication> findByApplicantId(Long applicantId);
 }

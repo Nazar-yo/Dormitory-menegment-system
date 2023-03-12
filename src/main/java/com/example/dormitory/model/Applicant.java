@@ -24,9 +24,6 @@ public class Applicant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "applicant_id")
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "settlement_application_id")
-    private SettlementApplication settlementApplication;
     private String firstName;
     private String lastName;
     private String patronymic;

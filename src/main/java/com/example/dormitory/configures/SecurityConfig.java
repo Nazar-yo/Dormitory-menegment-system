@@ -32,6 +32,10 @@ public class SecurityConfig {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/authorization/login", "/applicant/register", "/dormitory").permitAll()
+                        .anyRequest().authenticated()
+                )
                 .apply(new JwtConfigurer(jwtTokenProvider));
 
         return http.build();

@@ -9,9 +9,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DormitoryRepository extends JpaRepository<Dormitory, Long> {
-    @Query(value = "update dormitory.dormitory d set d.dormitory_photo = ?2 where dormitory_id = ?1", nativeQuery = true)
-    void saveFile(Long dormitoryId, InputStream photo);
-
-    @Query(value = "select d.dormitory_photo from dormitory.dormitory d where dormitory_id = ?1", nativeQuery = true)
-    Optional<InputStream> getPhotoById(Long id);
 }

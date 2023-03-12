@@ -7,11 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 public interface DormitoryService {
-    Dormitory create(DormitoryRequestDto dormitory, InputStream dormitoryPhoto);
+    Dormitory create(DormitoryRequestDto dormitory);
 
     Page<Dormitory> findAll(PageRequest pageRequest);
 
     Dormitory getById(Long id);
-
-    InputStream getPhotoById(Long id);
 }

@@ -2,6 +2,7 @@ package com.example.dormitory.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.example.dormitory.dto.AuthenticationLoginDto;
 import com.example.dormitory.model.Applicant;
 import com.example.dormitory.security.jwt.JwtTokenProvider;
 import com.example.dormitory.service.ApplicantService;
@@ -12,8 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,10 +32,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<Object, Object>> login(@RequestParam String email,
-                                                     @RequestParam String password) {
+    public ResponseEntity<Map<Object, Object>> login(@RequestBody AuthenticationLoginDto loginDto) {
+        String email = loginDto.getEmail();
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, loginDto.getPassword()));
             Applicant user = userService.findByEmail(email);
 
             if (user == null) {

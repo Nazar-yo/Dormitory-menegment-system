@@ -63,8 +63,8 @@ public class RoomController {
     @GetMapping("/{furniture_info}/available")
     public Pages<RoomResponseDto> getFreeRoomsByGenderAndDormitoryType(@RequestParam Gender gender,
                                                                        @PathVariable("furniture_info") boolean furnitureInfo,
-                                                                       @RequestParam Long dormitoryId,
-                                                                       @RequestParam DormitoryType dormitoryType,
+                                                                       @RequestParam(required = false) Long dormitoryId,
+                                                                       @RequestParam(required = false) DormitoryType dormitoryType,
                                                                        @RequestParam(defaultValue = "20") Integer count,
                                                                        @RequestParam(defaultValue = "0") Integer page,
                                                                        @RequestParam(defaultValue = "id") String sortBy) {

@@ -8,6 +8,7 @@ import lombok.Data;
 public class SettlementApplicationResponseDto {
     private Long id;
     private Long roomId;
+    private Long applicantId;
     private LocalDateTime creationDate;
     private LocalDateTime settlementStartDate;
     private LocalDateTime settlementEndDate;

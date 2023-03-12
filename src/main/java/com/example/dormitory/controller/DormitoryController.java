@@ -60,14 +60,13 @@ public class DormitoryController {
         return dormitoryMapper.mapToDto(dormitoryService.getById(id));
     }
 
-    @GetMapping(value = "/{id}/photo", produces = MediaType.IMAGE_JPEG_VALUE)
+    /*@GetMapping(value = "/{id}/photo", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getPhotoById(@PathVariable("id") Long id) throws IOException {
         return IOUtils.toByteArray(dormitoryService.getPhotoById(id));
-    }
+    }*/
 
     @PutMapping
-    public DormitoryResponseDto create(@RequestBody DormitoryRequestDto dormitoryRequestDto,
-                                       @RequestParam("image") InputStream dormitoryPhoto) {
-        return dormitoryMapper.mapToDto(dormitoryService.create(dormitoryRequestDto, dormitoryPhoto));
+    public DormitoryResponseDto create(@RequestBody DormitoryRequestDto dormitoryRequestDto) {
+        return dormitoryMapper.mapToDto(dormitoryService.create(dormitoryRequestDto));
     }
 }

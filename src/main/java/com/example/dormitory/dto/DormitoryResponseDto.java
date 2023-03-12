@@ -11,4 +11,5 @@ public class DormitoryResponseDto {
     private DormitoryType dormitoryType;
     private String contacts;
     private String faculties;
+    private String photo;
 }

@@ -17,7 +17,7 @@ public class DormitoryMapper implements ResponseDtoMapper<DormitoryResponseDto, 
         dormitory.setDormitoryType(dto.getDormitoryType());
         dormitory.setContacts(dto.getContacts());
         dormitory.setFaculties(dto.getFaculties());
-
+        dormitory.setPhoto(dto.getPhoto());
         return dormitory;
     }
 
@@ -30,6 +30,7 @@ public class DormitoryMapper implements ResponseDtoMapper<DormitoryResponseDto, 
         dormitoryResponseDto.setDormitoryType(dormitory.getDormitoryType());
         dormitoryResponseDto.setFaculties(dormitory.getFaculties());
         dormitoryResponseDto.setContacts(dormitory.getContacts());
+        dormitoryResponseDto.setPhoto(dormitory.getPhoto());
 
         return dormitoryResponseDto;
     }

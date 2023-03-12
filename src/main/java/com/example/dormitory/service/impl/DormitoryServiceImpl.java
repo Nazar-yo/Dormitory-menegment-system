@@ -23,12 +23,9 @@ public class DormitoryServiceImpl implements DormitoryService {
     }
 
     @Override
-    public Dormitory create(DormitoryRequestDto dormitory, InputStream dormitoryPhoto) {
-        Dormitory dormitory1 = dormitoryRepository.save(dormitoryMapper.mapToModel(dormitory));
+    public Dormitory create(DormitoryRequestDto dormitory) {
 
-        dormitoryRepository.saveFile(dormitory1.getId(), dormitoryPhoto);
-
-        return dormitory1;
+        return dormitoryRepository.save(dormitoryMapper.mapToModel(dormitory));
     }
 
     @Override
@@ -39,12 +36,6 @@ public class DormitoryServiceImpl implements DormitoryService {
     @Override
     public Dormitory getById(Long id) {
         return dormitoryRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not existing id: " + id));
-    }
-
-    @Override
-    public InputStream getPhotoById(Long id) {
-        return dormitoryRepository.getPhotoById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not existing id: " + id));
     }
 }

@@ -28,6 +28,7 @@ public class SettlementApplicationMapper implements RequestDtoMapper<SettlementA
        responseDto.setSettlementEndDate(settlementApplication.getSettlementEndDate());
        responseDto.setSettlementStartDate(settlementApplication.getSettlementStartDate());
        responseDto.setCreationDate(settlementApplication.getCreationDate());
+       responseDto.setApplicantId(settlementApplication.getId());
 
        return responseDto;
     }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,8 +36,8 @@ public class SettlementApplicationController {
     }
 
     @GetMapping
-    public SettlementApplicationResponseDto[] getAll() {
-        return service.getAll().stream()
+    public SettlementApplicationResponseDto[] findByApplicantId(@RequestParam Long applicantId) {
+        return service.findByApplicantId(applicantId).stream()
                 .map(mapper::mapToDto)
                 .collect(Collectors.toList())
                 .toArray(SettlementApplicationResponseDto[]::new);

@@ -26,6 +26,9 @@ public class SettlementApplication {
     @JoinColumn(name = "desired_room_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Room room;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "applicant_id")
+    private Applicant applicant;
     private LocalDateTime creationDate;
     private LocalDateTime settlementStartDate;
     private LocalDateTime settlementEndDate;

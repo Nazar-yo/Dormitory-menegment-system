@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class SettlementApplicationRequestDto {
     private Long roomId;
+    private Long applicantId;
     private LocalDateTime creationDate;
     private LocalDateTime settlementStartDate;
     private LocalDateTime settlementEndDate;
