@@ -15,16 +15,15 @@ import com.example.dormitory.service.RoomService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/room")
+@CrossOrigin(
+        origins = "http://localhost:4200",
+        allowedHeaders = {"Authorization", "Content-Type"},
+        methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE}
+)
 public class RoomController {
     private final RoomService roomService;
     private final FurnitureService furnitureService;
@@ -60,10 +59,10 @@ public class RoomController {
         return roomMapper.mapToDto(roomService.create(roomRequestDto));
     }
 
-    @GetMapping("/{furniture_info}/available")
+    @GetMapping("/{dormitoryId}/available")
     public Pages<RoomResponseDto> getFreeRoomsByGenderAndDormitoryType(@RequestParam Gender gender,
-                                                                       @PathVariable("furniture_info") boolean furnitureInfo,
-                                                                       @RequestParam(required = false) Long dormitoryId,
+                                                                       @PathVariable("dormitoryId") Long dormitoryId,
+                                                                       @RequestParam(defaultValue = "false") Boolean furnitureInfo,
                                                                        @RequestParam(required = false) DormitoryType dormitoryType,
                                                                        @RequestParam(defaultValue = "20") Integer count,
                                                                        @RequestParam(defaultValue = "0") Integer page,

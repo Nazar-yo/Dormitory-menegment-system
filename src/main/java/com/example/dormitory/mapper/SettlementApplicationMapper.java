@@ -8,6 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SettlementApplicationMapper implements RequestDtoMapper<SettlementApplicationRequestDto, SettlementApplication>,
         ResponseDtoMapper<SettlementApplicationResponseDto, SettlementApplication> {
+
+    private final RoomMapper roomMapper;
+
+    public SettlementApplicationMapper(RoomMapper roomMapper) {
+        this.roomMapper = roomMapper;
+    }
+
     @Override
     public SettlementApplication mapToModel(SettlementApplicationRequestDto dto) {
         SettlementApplication settlementApplication = new SettlementApplication();
@@ -21,15 +28,17 @@ public class SettlementApplicationMapper implements RequestDtoMapper<SettlementA
 
     @Override
     public SettlementApplicationResponseDto mapToDto(SettlementApplication settlementApplication) {
-       SettlementApplicationResponseDto responseDto = new SettlementApplicationResponseDto();
-       responseDto.setId(settlementApplication.getId());
-       responseDto.setApplicationStatus(settlementApplication.getApplicationStatus());
-       responseDto.setRoomId(settlementApplication.getRoom().getId());
-       responseDto.setSettlementEndDate(settlementApplication.getSettlementEndDate());
-       responseDto.setSettlementStartDate(settlementApplication.getSettlementStartDate());
-       responseDto.setCreationDate(settlementApplication.getCreationDate());
-       responseDto.setApplicantId(settlementApplication.getId());
+        SettlementApplicationResponseDto responseDto = new SettlementApplicationResponseDto();
+        responseDto.setId(settlementApplication.getId());
+        responseDto.setApplicationStatus(settlementApplication.getApplicationStatus());
+        if (settlementApplication.getRoom() != null) {
+            responseDto.setDesiredRoom(this.roomMapper.mapToDto(settlementApplication.getRoom()));
+        }
+        responseDto.setSettlementEndDate(settlementApplication.getSettlementEndDate());
+        responseDto.setSettlementStartDate(settlementApplication.getSettlementStartDate());
+        responseDto.setCreationDate(settlementApplication.getCreationDate());
+        responseDto.setApplicantId(settlementApplication.getId());
 
-       return responseDto;
+        return responseDto;
     }
 }

@@ -28,6 +28,7 @@ public class RoomMapper implements ResponseDtoMapper<RoomResponseDto, Room>,
         roomResponseDto.setGender(room.getGender());
         roomResponseDto.setResidents_number(room.getResidents_number());
         roomResponseDto.setId(room.getId());
+        roomResponseDto.setDormitoryNumber(room.getDormitory().getDormitoryNumber());
         roomResponseDto.setDormitoryId(room.getDormitory().getId());
 
         return roomResponseDto;

@@ -5,16 +5,15 @@ import com.example.dormitory.dto.SettlementApplicationRequestDto;
 import com.example.dormitory.dto.SettlementApplicationResponseDto;
 import com.example.dormitory.mapper.SettlementApplicationMapper;
 import com.example.dormitory.service.SettlementApplicationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/settlement-application")
+@CrossOrigin(
+        origins = "http://localhost:4200",
+        allowedHeaders = {"Authorization", "Content-Type"},
+        methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE}
+)
 public class SettlementApplicationController {
     private final SettlementApplicationService service;
     private final SettlementApplicationMapper mapper;

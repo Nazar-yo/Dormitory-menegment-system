@@ -5,4 +5,6 @@ import com.example.dormitory.model.InventoryItem;
 
 public interface InventoryItemService {
     List<InventoryItem> findByResidentId(Long residentId);
+
+    List<InventoryItem> findByApplicantId(Long applicantId);
 }

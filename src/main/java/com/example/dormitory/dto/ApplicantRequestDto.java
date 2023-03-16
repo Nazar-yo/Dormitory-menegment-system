@@ -18,6 +18,6 @@ public class ApplicantRequestDto {
     @Size(min = 8, max = 40)
     private String password;
     private String faculty;
-    private Integer course;
+    private String group;
     private Gender gender;
 }

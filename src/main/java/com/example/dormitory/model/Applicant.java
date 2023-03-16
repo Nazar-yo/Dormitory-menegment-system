@@ -32,7 +32,8 @@ public class Applicant {
     private String email;
     private String password;
     private String faculty;
-    private Integer course;
+    @Column(name = "students_group")
+    private String group;
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
     @ManyToMany(fetch = FetchType.EAGER)

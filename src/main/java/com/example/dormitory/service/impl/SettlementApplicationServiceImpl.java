@@ -1,6 +1,7 @@
 package com.example.dormitory.service.impl;
 
 import java.util.List;
+
 import com.example.dormitory.dto.SettlementApplicationRequestDto;
 import com.example.dormitory.mapper.SettlementApplicationMapper;
 import com.example.dormitory.model.Applicant;
@@ -30,7 +31,10 @@ public class SettlementApplicationServiceImpl implements SettlementApplicationSe
 
     @Override
     public SettlementApplication create(SettlementApplicationRequestDto requestDto) {
-        Room room = roomService.getById(requestDto.getRoomId());
+        Room room = null;
+        if (requestDto.getRoomId() != null) {
+            room = roomService.getById(requestDto.getRoomId());
+        }
         Applicant applicant = applicantService.getById(requestDto.getApplicantId());
         SettlementApplication settlementApplication = mapper.mapToModel(requestDto);
         settlementApplication.setRoom(room);

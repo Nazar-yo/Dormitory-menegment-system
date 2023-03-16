@@ -18,4 +18,9 @@ public class InventoryItemServiceImpl implements InventoryItemService {
     public List<InventoryItem> findByResidentId(Long residentId) {
         return repository.getInventoryItemsByResident_Id(residentId);
     }
+
+    @Override
+    public List<InventoryItem> findByApplicantId(Long applicantId) {
+        return repository.getInventoryItemsByResidentApplicantId(applicantId);
+    }
 }

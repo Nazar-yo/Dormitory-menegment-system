@@ -12,6 +12,6 @@ public class ApplicantResponseDto {
     private String phoneNumber;
     private String email;
     private String faculty;
-    private Integer course;
+    private String group;
     private Gender gender;
 }

@@ -11,7 +11,7 @@ public class ApplicantMapper implements RequestDtoMapper<ApplicantRequestDto, Ap
     @Override
     public Applicant mapToModel(ApplicantRequestDto dto) {
         Applicant applicant = new Applicant();
-        applicant.setCourse(dto.getCourse());
+        applicant.setGroup(dto.getGroup());
         applicant.setEmail(dto.getEmail());
         applicant.setFaculty(dto.getFaculty());
         applicant.setGender(dto.getGender());
@@ -26,6 +26,17 @@ public class ApplicantMapper implements RequestDtoMapper<ApplicantRequestDto, Ap
 
     @Override
     public ApplicantResponseDto mapToDto(Applicant applicant) {
-        return null;
+        ApplicantResponseDto dto = new ApplicantResponseDto();
+        dto.setEmail(applicant.getEmail());
+        dto.setFaculty(applicant.getFaculty());
+        dto.setGender(applicant.getGender());
+        dto.setFirstName(applicant.getFirstName());
+        dto.setLastName(applicant.getLastName());
+        dto.setPatronymic(applicant.getPatronymic());
+        dto.setId(applicant.getId());
+        dto.setPhoneNumber(applicant.getPhoneNumber());
+        dto.setGroup(applicant.getGroup());
+
+        return dto;
     }
 }

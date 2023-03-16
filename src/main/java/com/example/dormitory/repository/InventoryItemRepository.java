@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface InventoryItemRepository extends JpaRepository<InventoryItem, Long> {
     List<InventoryItem> getInventoryItemsByResident_Id(Long residentId);
+
+    List<InventoryItem> getInventoryItemsByResidentApplicantId(Long applicantId);
 }
